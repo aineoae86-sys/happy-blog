@@ -1,0 +1,21 @@
+{
+  "name": "happy-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "node scripts/astro-run.mjs dev --host 127.0.0.1",
+    "build": "node scripts/astro-run.mjs check && node scripts/astro-run.mjs build",
+    "preview": "node scripts/astro-run.mjs preview --host 127.0.0.1",
+    "astro": "node scripts/astro-run.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "@astrojs/rss": "latest",
+    "astro": "latest",
+    "typescript": "latest"
+  }
+}

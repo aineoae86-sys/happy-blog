@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { siteConfig } from "../site.config";
+import { tagSlug } from "../utils/tags";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const [featured, ...recent] = posts;
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].slice(0, 8);
+---
+
+<BaseLayout title={siteConfig.title} description={siteConfig.description}>
+  <section class="home-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">AI · 内容 · 效率</p>
+      <h1>把工具用成结果，把经验写成资产。</h1>
+      <p>
+        这里记录 AI 工具实测、内容运营方法和个人效率流程。文章按实用场景组织，方便检索和复用。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/blog/">读文章</a>
+        <a class="button secondary" href="/about/">看定位</a>
+      </div>
+    </div>
+    {featured && <PostCard post={featured} featured />}
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">最新文章</p>
+        <h2>最近更新</h2>
+      </div>
+      <a href="/blog/">全部文章</a>
+    </div>
+    <div class="post-grid">
+      {recent.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="section topic-band">
+    <div>
+      <p class="eyebrow">Topics</p>
+      <h2>按主题阅读</h2>
+    </div>
+    <div class="topic-links">
+      {tags.map((tag) => (
+        <a href={`/tags/${tagSlug(tag)}/`}>{tag}</a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
