@@ -43,6 +43,16 @@ Vercel 已有配置文件 `vercel.json`：
 
 生产环境使用 GitHub 作为内容仓库，配置在 `public/admin/config.yml`。当前配置的仓库是 `aineoae86-sys/happy-blog`，需要把本项目推送到这个 GitHub 仓库，并配置 GitHub OAuth 代理后，才能在线登录并发布文章。
 
+GitHub OAuth App 配置：
+
+- Homepage URL: `https://happy-blog-psi.vercel.app`
+- Authorization callback URL: `https://happy-blog-psi.vercel.app/api/callback`
+
+Vercel 环境变量：
+
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`
+
 本地测试后台：
 
 ```bash
