@@ -53,6 +53,8 @@ Vercel 环境变量：
 - `GITHUB_CLIENT_ID`
 - `GITHUB_CLIENT_SECRET`
 
+GitHub 连接到 Vercel 后，推送到 `main` 分支会自动触发生产部署。
+
 本地测试后台：
 
 ```bash
