@@ -1,0 +1,10 @@
+.git
+.astro
+.npm-cache
+.vercel
+dist
+node_modules
+dev-server*.log
+npm-debug.log*
+.env
+.env.*
