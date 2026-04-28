@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "node scripts/astro-run.mjs dev --host 127.0.0.1",
+    "cms": "npx --yes decap-server",
     "build": "node scripts/astro-run.mjs check && node scripts/astro-run.mjs build",
     "preview": "node scripts/astro-run.mjs preview --host 127.0.0.1",
     "astro": "node scripts/astro-run.mjs"

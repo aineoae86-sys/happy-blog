@@ -1,0 +1,66 @@
+backend:
+  name: github
+  repo: aineoae86-sys/happy-blog
+  branch: main
+
+local_backend: true
+
+site_url: https://happy-blog-psi.vercel.app
+display_url: https://happy-blog-psi.vercel.app
+logo_url: /favicon.svg
+
+locale: zh_Hans
+publish_mode: editorial_workflow
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: blog
+    label: 文章
+    label_singular: 文章
+    folder: src/content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}} - {{pubDate}}"
+    sortable_fields:
+      - pubDate
+      - title
+      - draft
+    fields:
+      - label: 标题
+        name: title
+        widget: string
+      - label: 摘要
+        name: description
+        widget: text
+      - label: 发布时间
+        name: pubDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+      - label: 更新时间
+        name: updatedDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+        required: false
+      - label: 标签
+        name: tags
+        widget: list
+        default:
+          - 博客
+      - label: 封面图
+        name: heroImage
+        widget: image
+        required: false
+      - label: 草稿
+        name: draft
+        widget: boolean
+        default: false
+      - label: 正文
+        name: body
+        widget: markdown
